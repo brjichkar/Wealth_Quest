@@ -4,3 +4,5 @@ const String kSave = 'Save';
 const String kEmpty = '';
 const String kRsSymbol = '\u{20B9}';
 const String kDateFormat = 'dd-MMM-yy';
+const String kWithdraw = 'Withdraw';
+const String kDeposit = 'Deposit';

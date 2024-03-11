@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Wealth Quest'),
+      home: const MyHomePage(title: 'Home'),
     );
   }
 }
@@ -33,12 +33,12 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: const HomePage(),
+        // This trailing comma makes auto-formatting nicer for build methods.
       ),
-      body: const HomePage(),
-      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

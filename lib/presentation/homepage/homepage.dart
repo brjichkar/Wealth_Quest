@@ -1,7 +1,8 @@
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:wealth_quest/presentation/homepage/homepage_header.dart';
 
-import '../../resources/app_colors.dart';
+import 'homepage_balance.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,104 +12,135 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int touchedIndex = -1;
-
   @override
   Widget build(BuildContext context) {
-    return PieChart(
-      swapAnimationDuration: Duration(seconds: 5),
-      swapAnimationCurve: Curves.bounceIn,
-      PieChartData(
-        pieTouchData: PieTouchData(
-          touchCallback: (FlTouchEvent event, pieTouchResponse) {
-            setState(() {
-              if (!event.isInterestedForInteractions ||
-                  pieTouchResponse == null ||
-                  pieTouchResponse.touchedSection == null) {
-                touchedIndex = -1;
-                return;
-              }
-              touchedIndex =
-                  pieTouchResponse.touchedSection!.touchedSectionIndex;
-              debugPrint('Selected Section - $touchedIndex event-  $event');
-              debugPrint('here, event: $event');
-            });
-          },
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: const [
+              HomepageHeader(),
+              SizedBox(
+                height: 20,
+              ),
+              HomepageBalance(),
+            ],
+          ),
         ),
-        borderData: FlBorderData(
-          show: false,
+        Expanded(
+          child: Container(
+            width: double.infinity,
+            height: double.infinity,
+            decoration: const BoxDecoration(
+              color: Color(0xff000000),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(30.0),
+                topRight: Radius.circular(30.0),
+              ),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: 15,
+                      left: 15,
+                      right: 15,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Recent Investment",
+                          style: GoogleFonts.inter(
+                            letterSpacing: .5,
+                            fontSize: 14,
+                            fontWeight: FontWeight.normal,
+                            color: const Color(0xffffffff),
+                          ),
+                        ),
+                        const Expanded(
+                          child: SizedBox(),
+                        ),
+                        Text(
+                          "View all",
+                          style: GoogleFonts.inter(
+                            letterSpacing: .5,
+                            fontSize: 12,
+                            fontWeight: FontWeight.normal,
+                            color: const Color(0xffffffff),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Card(
+                      shadowColor: Colors.black,
+                      color: Color(0xffebebeb),
+                      child: SizedBox(
+                        height: 150,
+                        width: 150,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: 15,
+                      left: 15,
+                      right: 15,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Investment by Category",
+                          style: GoogleFonts.inter(
+                            letterSpacing: .5,
+                            fontSize: 14,
+                            fontWeight: FontWeight.normal,
+                            color: const Color(0xffffffff),
+                          ),
+                        ),
+                        const Expanded(
+                          child: SizedBox(),
+                        ),
+                        Text(
+                          "View all",
+                          style: GoogleFonts.inter(
+                            letterSpacing: .5,
+                            fontSize: 12,
+                            fontWeight: FontWeight.normal,
+                            color: const Color(0xffffffff),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Card(
+                      shadowColor: Colors.black,
+                      color: Color(0xffebebeb),
+                      child: SizedBox(
+                        height: 150,
+                        width: 150,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ),
-        sectionsSpace: 0,
-        centerSpaceRadius: 0,
-        sections: showingSections(),
-      ),
+      ],
     );
-  }
-
-  List<PieChartSectionData> showingSections() {
-    return List.generate(4, (i) {
-      final isTouched = i == touchedIndex;
-      final fontSize = isTouched ? 20.0 : 16.0;
-      final radius = isTouched ? 110.0 : 100.0;
-      final widgetSize = isTouched ? 55.0 : 40.0;
-      const shadows = [Shadow(color: Colors.black, blurRadius: 2)];
-
-      switch (i) {
-        case 0:
-          return PieChartSectionData(
-            color: AppColors.contentColorBlue,
-            value: 40,
-            title: '40%',
-            radius: radius,
-            titleStyle: TextStyle(
-              fontSize: fontSize,
-              fontWeight: FontWeight.bold,
-              color: const Color(0xffffffff),
-              shadows: shadows,
-            ),
-          );
-        case 1:
-          return PieChartSectionData(
-            color: AppColors.contentColorYellow,
-            value: 30,
-            title: '30%',
-            radius: radius,
-            titleStyle: TextStyle(
-              fontSize: fontSize,
-              fontWeight: FontWeight.bold,
-              color: const Color(0xffffffff),
-              shadows: shadows,
-            ),
-          );
-        case 2:
-          return PieChartSectionData(
-            color: AppColors.contentColorPurple,
-            value: 16,
-            title: '16%',
-            radius: radius,
-            titleStyle: TextStyle(
-              fontSize: fontSize,
-              fontWeight: FontWeight.bold,
-              color: const Color(0xffffffff),
-              shadows: shadows,
-            ),
-          );
-        case 3:
-          return PieChartSectionData(
-            color: AppColors.contentColorGreen,
-            value: 15,
-            title: '15%',
-            radius: radius,
-            titleStyle: TextStyle(
-              fontSize: fontSize,
-              fontWeight: FontWeight.bold,
-              color: const Color(0xffffffff),
-              shadows: shadows,
-            ),
-          );
-        default:
-          throw Exception('Oh no');
-      }
-    });
   }
 }

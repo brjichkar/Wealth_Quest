@@ -82,7 +82,7 @@ class _PPFInputDataState extends State<PPFInputData> {
               minimumSize: const Size.fromHeight(50),
             ),
             child: const Text(kSave),
-          )
+          ),
         ],
       ),
     );
