@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:wealth_quest/presentation/homepage/homepage.dart';
 import 'package:wealth_quest/presentation/ppf_section/ppf_input_data.dart';
 
+import 'presentation/homepage/recent_investment.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -36,7 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
-        body: const HomePage(),
+        body: HomePage(),
         // This trailing comma makes auto-formatting nicer for build methods.
       ),
     );

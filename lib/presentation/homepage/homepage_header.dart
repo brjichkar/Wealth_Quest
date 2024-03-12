@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:wealth_quest/presentation/user_profile/user_profile.dart';
 
 class HomepageHeader extends StatefulWidget {
   const HomepageHeader({super.key});
@@ -16,11 +17,17 @@ class _HomepageHeaderState extends State<HomepageHeader> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         ClipOval(
-          child: Image.network(
-            'https://www.clipartmax.com/png/middle/258-2582267_circled-user-male-skin-type-1-2-icon-male-user-icon.png',
-            width: 50,
-            height: 50,
-            fit: BoxFit.cover,
+          child: GestureDetector(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => UserProfile()));
+            },
+            child: Image.network(
+              'https://www.clipartmax.com/png/middle/258-2582267_circled-user-male-skin-type-1-2-icon-male-user-icon.png',
+              width: 50,
+              height: 50,
+              fit: BoxFit.cover,
+            ),
           ),
         ),
         const SizedBox(
