@@ -16,7 +16,7 @@ class _RecentInvestmentState extends State<RecentInvestment> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: SizedBox(
-        height: 120,
+        height: 130,
         child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: 10,

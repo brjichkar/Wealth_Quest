@@ -5,6 +5,7 @@ import 'package:wealth_quest/presentation/homepage/recent_investment.dart';
 
 import '../../constants/app_constants.dart';
 import 'homepage_balance.dart';
+import 'investment_categories.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -117,17 +118,7 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Card(
-                        shadowColor: Colors.black,
-                        color: Color(0xffebebeb),
-                        child: SizedBox(
-                          height: 150,
-                          width: 150,
-                        ),
-                      ),
-                    ),
+                    InvestmentByCategory()
                   ],
                 ),
               ),
